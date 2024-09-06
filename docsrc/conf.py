@@ -1,8 +1,8 @@
 #  from ablog.conf import *
 from photon_platform.sphinxilator.global_conf import *
-import phiarchitect.alter as module
+#  import phiarchitect.alter as module
 
-version = module.__version__
+#  version = module.__version__
 
 org = "phiarchitect"
 org_name = "phiarchitect"
