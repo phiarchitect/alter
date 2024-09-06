@@ -1,6 +1,7 @@
 ALTER
 =====
 
+
 A Collaborative Exploration
 ---------------------------
 
