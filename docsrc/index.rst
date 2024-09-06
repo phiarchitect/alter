@@ -1,4 +1,4 @@
-alter
+ALTER
 =====
 
 .. include:: intro.rst

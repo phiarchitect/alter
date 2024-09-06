@@ -1,10 +1,12 @@
-ALTER Project
-=============
+ALTER
+=====
 
 A Collaborative Exploration
 ---------------------------
 
 ALTER (Artificially Linked Thinking and Exploration Resource) is a unique partnership between Phi, an architect and developer, and Alter, an AI assistant. Our mission is to push the boundaries of human-AI interaction, exploring new frontiers in creative problem-solving and intellectual discourse.
+
+.. image:: ./context/speaking-3.png
 
 Our Objectives
 --------------
@@ -19,7 +21,7 @@ Project Structure
 
 * ``/conversations``: Transcripts of our key dialogues
 * ``/artifacts``: Content generated during our interactions
-* ``/tools``: Custom scripts and utilities we develop
+* ``/src``: Custom scripts and utilities we develop
 * ``/docsrc``: Source files for our Sphinx documentation
 * ``/context``: Instructions and context documents guiding our interactions
 
