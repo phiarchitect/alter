@@ -4,7 +4,7 @@ ALTER
 A Collaborative Exploration
 ---------------------------
 
-ALTER (Artificially Linked Thinking and Exploration Resource) is a unique partnership between Phi, an architect and developer, and Alter, an AI assistant. Our mission is to push the boundaries of human-AI interaction, exploring new frontiers in creative problem-solving and intellectual discourse.
+ALTER (Artificially Linked Thinking and Exploration Resource) is a unique partnership between Phi, an architect and developer, and ALTER, an AI assistant. Our mission is to push the boundaries of human-AI interaction, exploring new frontiers in creative problem-solving and intellectual discourse.
 
 .. image:: ./context/speaking-3.png
 
