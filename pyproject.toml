@@ -1,0 +1,39 @@
+[project]
+name = "phiarchitect-alter"
+dynamic = ["version"]
+authors = [
+  { name="phi ARCHITECT", email="github@phiarchitect.com" },
+]
+description = "code and documentation for ALTER"
+readme = "README.rst"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    "textual",
+    "rich",
+    "jinja2",
+]
+
+[project.scripts]
+alter = "phiarchitect.alter.__main__:run"
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["phiarchitect"]
+namespaces = true
+
+[tool.setuptools.dynamic]
+version = {attr = "phiarchitect.alter.__version__"}
+
+[project.urls]
+"Website" = "https://phiarchitect.github.io/alter"
+"Repository" = "https://github.com/phiarchitect/alter"
+"Issues" = "https://github.com/phiarchitect/alter/issues"
