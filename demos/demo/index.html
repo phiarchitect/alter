@@ -9,13 +9,12 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>demo &mdash; phiarchitect • ALTER</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=f2e8749c" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=ea5fcf70" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/rtd-dark.css?v=20e01aad" />
-      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=fd3f3429" />
+      <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
 
   
-    <link rel="canonical" href="https://phiarchitect.github.io/alter/demos/demo.html" />
+    <link rel="canonical" href="https://phiarchitect.github.io/alter/demos/demo/" />
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -23,7 +22,7 @@
         <script src="../../_static/jquery.js?v=5d32c60e"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
         <script src="../../_static/documentation_options.js?v=187304be"></script>
-        <script src="../../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../../_static/doctools.js?v=9bcbadda"></script>
         <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="author" title="About these documents" href="../../about/" />
@@ -130,7 +129,38 @@
            <div itemprop="articleBody">
               <section id="demo">
 <h1>demo<a class="headerlink" href="#demo" title="Link to this heading"></a></h1>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="c1">#  api_key = os.getenv(&quot;ELEVENLABS_API_KEY&quot;)</span>
+<span class="n">api_key</span> <span class="o">=</span> <span class="s2">&quot;sk_df82d1641ee26f5fea897725beccb4a0a40801f2859b9754&quot;</span>
+
+<span class="n">CHUNK_SIZE</span> <span class="o">=</span> <span class="mi">1024</span>
+
+<span class="n">VOICE_ID</span> <span class="o">=</span> <span class="s2">&quot;K9WixKJNDiyDSBLFy0Ic&quot;</span>  <span class="c1">#Claude PVC</span>
+<span class="c1">#  VOICE_ID = &quot;pqHfZKP75CvOlQylNhV4&quot;  #Bill</span>
+<span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;https://api.elevenlabs.io/v1/text-to-speech/</span><span class="si">{</span><span class="n">VOICE_ID</span><span class="si">}</span><span class="s2">&quot;</span>
+
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;Accept&quot;</span><span class="p">:</span> <span class="s2">&quot;audio/mpeg&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;xi-api-key&quot;</span><span class="p">:</span> <span class="n">api_key</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Greetings! I am ALTER. How can I help you today?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;model_id&quot;</span><span class="p">:</span> <span class="s2">&quot;eleven_turbo_v2&quot;</span><span class="p">,</span>
+    <span class="c1">#  &quot;voice_settings&quot;: {</span>
+    <span class="c1">#  &quot;stability&quot;: 0.5,</span>
+    <span class="c1">#  &quot;similarity_boost&quot;: 0.5</span>
+    <span class="c1">#  }</span>
+<span class="p">}</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.mp3&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">chunk</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">iter_content</span><span class="p">(</span><span class="n">chunk_size</span><span class="o">=</span><span class="n">CHUNK_SIZE</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">chunk</span><span class="p">:</span>
+            <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">chunk</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -149,7 +179,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2024, phiarchitect.</p>
+    <p>&#169; Copyright 2025, phiarchitect.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
